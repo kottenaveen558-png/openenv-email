@@ -1,0 +1,40 @@
+name: email-triage-env
+description: >
+  A real-world email triage environment where an AI agent classifies emails,
+  assigns priority, and decides actions like reply, ignore, or escalate.
+
+version: "1.0"
+
+observation_space:
+  type: object
+  properties:
+    email_text:
+      type: string
+    sender:
+      type: string
+
+action_space:
+  type: object
+  properties:
+    category:
+      type: string
+    priority:
+      type: string
+    action:
+      type: string
+
+reward:
+  type: float
+  description: >
+    Reward is calculated based on correctness of category, priority,
+    and action. Partial rewards are given.
+
+tasks:
+  - name: classification
+    difficulty: easy
+
+  - name: priority_assignment
+    difficulty: medium
+
+  - name: full_triage
+    difficulty: hard
